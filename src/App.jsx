@@ -8,6 +8,7 @@ import Search from './pages/search'
 import WelcomePage from './pages/welcomePage'
 import Gallery from './pages/discover'
 import SplashScreen from './components/splashScreen'
+import ForgotPassword from './pages/forgotpassword'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/search" element={<Search />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>
     </BrowserRouter>
   )

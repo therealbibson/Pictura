@@ -96,7 +96,7 @@ const SignIn = () => {
             />
           </div>
 
-          <Link to='' className='w-full text-right text-sm transition-all duration-300 hover:text-[#ff8c42] hover:underline'>
+          <Link to='/forgotpassword' className='w-full text-right text-sm transition-all duration-300 hover:text-[#ff8c42] hover:underline'>
             Forget Password?
           </Link>
 
