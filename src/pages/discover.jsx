@@ -9,6 +9,7 @@ import Card5 from '../assets/images/Frame 89 (4).svg'
 import Card6 from '../assets/images/Frame 89 (5).svg'
 import Card7 from '../assets/images/Frame 89 (6).svg'
 import Card8 from '../assets/images/Frame 89 (7).svg'
+import { FaRegHeart, FaRegBookmark } from "react-icons/fa";
 
 const Gallery = () => {
   const galleryItems = [
@@ -52,6 +53,20 @@ const Gallery = () => {
             <p className="font-medium p-3 pt-1 text-xs md:text-sm lg:text-base leading-tight">
               {item.title}
             </p>
+
+            {/* Overlay Icons */}
+            <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition">
+              <button className="bg-black/60 p-1 rounded-full text-xs">
+                <FaRegHeart />
+              </button>
+              <button className="bg-black/60 p-1 rounded-full text-xs">
+                <FaRegBookmark />
+              </button>
+            </div>
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+            
           </div>
         ))}
 

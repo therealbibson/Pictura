@@ -30,7 +30,7 @@ const Nav2 = () => {
           {/* Navigation Links - Hidden on Mobile/Tablet to avoid clutter */}
           <div className="hidden lg:flex items-center gap-6 text-sm">
             <Link to='' className="hover:text-white transition-colors">Explore</Link>
-            <Link to='' className="hover:text-white transition-colors">Feed</Link>
+            <Link to='/wallpapers' className="hover:text-white transition-colors">Feed</Link>
             <Link to='' className="hover:text-white transition-colors">Library</Link>
           </div>
 

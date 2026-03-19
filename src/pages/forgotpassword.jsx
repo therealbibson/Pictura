@@ -30,9 +30,11 @@ const forgotpassword = () => {
                     Reset Password
                 </button>
 
-                <Link to='/signin' className='w-full text-left text-sm transition-all duration-300 hover:text-[#ff8c42] hover:underline'>
-                    Back to Sign in
-                </Link>
+                <div className='w-full text-left '>
+                    <Link to='/signin' className='text-sm transition-all p-2 duration-300 hover:border-[#ff8c42] border rounded-md'>
+                        Back to Sign-In
+                    </Link>
+                </div>
             </form>
 
         </div>

@@ -6,11 +6,14 @@ import { FaRegEnvelope } from "react-icons/fa6";
 import { FiLock } from "react-icons/fi";
 import { auth } from '../lib/firebase'
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const SignUp = () => { // Capitalized for React convention
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -84,21 +87,33 @@ const SignUp = () => { // Capitalized for React convention
           <div className='relative items-center inline-flex w-full'>
             <FiLock className='absolute left-[12px] text-[#F5F5F0] z-10' />
             <Input 
-              type="password" 
+              type={showPassword ? "text" : "password"} 
               placeholder="Create a password" 
               value={password} 
               onChange={(e) => setPassword(e.target.value)} 
             />
+            <div 
+              className='absolute right-[12px] text-[#F5F5F0] z-10 cursor-pointer'
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+            </div>
           </div>
           
           <div className='relative items-center inline-flex w-full'>
             <FiLock className='absolute left-[12px] text-[#F5F5F0] z-10' />
             <Input 
-              type="password" 
+              type={showConfirmPassword ? "text" : "password"} 
               placeholder="Confirm password" 
               value={confirmPassword} 
               onChange={(e) => setConfirmPassword(e.target.value)} 
             />
+            <div 
+              className='absolute right-[12px] text-[#F5F5F0] z-10 cursor-pointer'
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+            </div>
           </div>
 
           <Link to='/signin' className='text-sm md:text-base transition-all duration-300 hover:text-[#ff8c42] hover:underline'>

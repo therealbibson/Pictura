@@ -9,6 +9,7 @@ import WelcomePage from './pages/welcomePage'
 import Gallery from './pages/discover'
 import SplashScreen from './components/splashScreen'
 import ForgotPassword from './pages/forgotpassword'
+import Wallpapers from './pages/wallpapers'
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path='/wallpapers' element={<Wallpapers />} />
       </Routes>
     </BrowserRouter>
   )

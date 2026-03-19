@@ -7,10 +7,12 @@ import { FaRegEnvelope } from "react-icons/fa6";
 import { FiLock } from "react-icons/fi";
 import { auth } from '../lib/firebase'
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -89,11 +91,17 @@ const SignIn = () => {
           <div className='relative items-center inline-flex w-full'>
             <FiLock className='absolute left-[12px] text-[#F5F5F0] z-10' />
             <Input 
-              type="password" 
+              type={showPassword ? "text" : "password"} 
               placeholder="Password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <div 
+              className='absolute right-[12px] text-[#F5F5F0] z-10 cursor-pointer'
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+            </div>
           </div>
 
           <Link to='/forgotpassword' className='w-full text-right text-sm transition-all duration-300 hover:text-[#ff8c42] hover:underline'>
