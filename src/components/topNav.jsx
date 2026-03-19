@@ -19,7 +19,7 @@ const TopNav = ({ onToggleSidebar }) => { // Capitalized name
             {/* Nav Links: Hidden on very small screens, visible from 'sm' up */}
             <div className="hidden sm:flex gap-4 md:gap-10 text-[#F5F5F0]">
                 <Link to='/gallery' className="hover:text-[#ff8c42] transition-colors cursor-pointer text-sm md:text-base">Discover</Link>
-                <Link to='/create' className="hover:text-[#ff8c42] transition-colors cursor-pointer text-sm md:text-base">Create</Link>
+                <Link to='/wallpapers' className="hover:text-[#ff8c42] transition-colors cursor-pointer text-sm md:text-base">Create</Link>
                 <Link to='/saved' className="hover:text-[#ff8c42] transition-colors cursor-pointer text-sm md:text-base">Saved</Link>
             </div>
         </div>
