@@ -10,6 +10,7 @@ import Gallery from './pages/discover'
 import SplashScreen from './components/splashScreen'
 import ForgotPassword from './pages/forgotpassword'
 import Wallpapers from './pages/wallpapers'
+import ProfilePage from './pages/profile'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path='/wallpapers' element={<Wallpapers />} />
+        <Route path='/profile' element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   )

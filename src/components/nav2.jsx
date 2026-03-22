@@ -40,7 +40,9 @@ const Nav2 = () => {
           </button>
 
           {/* User Icon - Proportional scaling */}
-          <FaUserCircle className='w-8 h-8 md:w-10 md:h-10 lg:w-[50px] lg:h-[50px] text-[#f5f5f0] cursor-pointer' />
+          <Link to='/profile'>
+            <FaUserCircle className='w-8 h-8 md:w-10 md:h-10 lg:w-[50px] lg:h-[50px] text-[#f5f5f0] cursor-pointer hover:text-[#ff8c42] transition-colors duration-300' />
+          </Link>
         </div>
         
     </nav>
