@@ -17,15 +17,15 @@ const sidebar = ({ isOpen, setIsOpen }) => {
                 <span>📖</span> Discover
             </Link>
 
-            <Link to='/create' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
+            <Link to='' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
                 <span>✨</span> Create
             </Link>
 
-            <Link to='/saved' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
+            <Link to='' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
                 <span>🔖</span> Saved
             </Link>
 
-            <Link to='settings' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
+            <Link to='/profile' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
                 <span>⚙️</span> Settings
             </Link>
         </nav>

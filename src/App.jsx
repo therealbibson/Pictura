@@ -11,6 +11,8 @@ import SplashScreen from './components/splashScreen'
 import ForgotPassword from './pages/forgotpassword'
 import Wallpapers from './pages/wallpapers'
 import ProfilePage from './pages/profile'
+import Personalization from './components/personalization'
+import ResetPassword from './pages/resetpassword'
 
 const App = () => {
   return (
@@ -27,6 +29,8 @@ const App = () => {
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path='/wallpapers' element={<Wallpapers />} />
         <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/personalization' element={<Personalization />} />
+        <Route path='/resetpassword' element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   )

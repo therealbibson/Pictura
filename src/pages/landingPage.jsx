@@ -5,37 +5,29 @@ import Img1 from '../assets/images/Rectangle 1.svg'
 import Img2 from '../assets/images/Rectangle 2.svg'
 import Img3 from '../assets/images/Rectangle 7.svg'
 import Img4 from '../assets/images/Rectangle 9.svg'
-import Img10 from '../assets/images/Rectangle 10.svg' // Fixed duplicate import name
+import Img10 from '../assets/images/Rectangle 10.svg'
 import Img12 from '../assets/images/Rectangle 12.svg'
 
 const LandingPage = () => {
   return (
     <div className='text-[#F5F5F0] min-h-screen w-full pictura-bg flex flex-col overflow-x-hidden'>
       
-      {/* Logo: Adjusted for mobile touch targets */}
       <img src={Logo} alt="Logo" className='p-5 w-[100px] md:w-[120px] h-auto' />
 
       <div className='flex flex-col gap-5 items-center justify-center flex-1 py-10'>
         
-        {/* IMAGE ROW LOGIC:
-          - Mobile: overflow-x-auto (allows swiping) and flex-nowrap (keeps them in one line)
-          - Desktop: md:justify-center (centers them once screen is wide enough)
-        */}
         <div className='flex items-center justify-start md:justify-center gap-4 md:gap-6 w-full overflow-x-auto md:overflow-visible flex-nowrap px-6 no-scrollbar'>
           {[Img4, Img1, Img10, Img3, Img10, Img12, Img2].map((img, index) => (
             <img 
               key={index}
               src={img} 
               alt="" 
-              // shrink-0 prevents mobile from squishing the images
-              // h-24 on mobile, h-auto (original) on desktop
               className='opacity-70 shrink-0 h-24 md:h-auto w-auto object-contain' 
             />
           ))}
         </div>
 
         <div className='text-Roboto px-6 text-center'>
-          {/* Text size fluidly scales from mobile to desktop */}
           <h3 className='font-bold text-[28px] md:text-[34.3px] leading-tight'>
             Turn your emotions to powerful <br className='hidden md:block' /> visuals.
           </h3>

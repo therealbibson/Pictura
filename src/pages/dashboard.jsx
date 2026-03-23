@@ -2,16 +2,13 @@ import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/sidebar'
 import TopNav from '../components/topNav'
 
-const GeneratePage = () => { // Capitalized name
+const GeneratePage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Trap the user on the dashboard when they press the "back" button
   useEffect(() => {
-    // Push a new state to the history stack
     window.history.pushState(null, null, window.location.pathname);
 
     const handlePopState = () => {
-      // Re-push the state to effectively "cancel" the back navigation
       window.history.pushState(null, null, window.location.pathname);
     };
 
@@ -22,7 +19,6 @@ const GeneratePage = () => { // Capitalized name
     };
   }, []);
 
-  // Using paths from the public folder
   const frames = [
     '/images/Frame 118.svg',
     '/images/Frame 119.svg',
@@ -35,14 +31,11 @@ const GeneratePage = () => { // Capitalized name
   ];
 
   return (
-    // overflow-x-hidden is crucial to prevent the sidebar from creating a horizontal scrollbar
     <div className="pictura-bg text-white min-h-screen w-full overflow-x-hidden">
       <div className="flex relative">
         
-        {/* SIDEBAR */}
         <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
         
-        {/* MAIN CONTENT area */}
         <main className="flex-1 flex flex-col min-w-0">
           <TopNav onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
           

@@ -34,18 +34,12 @@ const Gallery = () => {
         {galleryItems.map((item, index) => (
           <div 
             key={index} 
-            // 1. We define 'group' on the parent card to listen for hover
             className="group bg-gray-800/50 backdrop-blur-sm h-auto rounded-xl overflow-hidden cursor-pointer hover:ring-2 hover:ring-[#ff8c42] transition-all duration-300"
           >
-            {/* 2. 'overflow-hidden' on this container is critical to mask the scaled image */}
             <div className="p-1 h-32 sm:h-40 md:h-48 overflow-hidden rounded-xl">
               <img 
                 src={item.img} 
                 alt={item.title} 
-                // 3. Add these transition and scale utilities:
-                // - transition-transform: animates transform properties
-                // - duration-500: smoothness
-                // - group-hover:scale-110: when card (group) is hovered, scale this image to 110%
                 className="object-cover h-full w-full rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-110" 
               />
             </div>
@@ -54,7 +48,6 @@ const Gallery = () => {
               {item.title}
             </p>
 
-            {/* Overlay Icons */}
             <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition">
               <button className="bg-black/60 p-1 rounded-full text-xs">
                 <FaRegHeart />
@@ -64,7 +57,6 @@ const Gallery = () => {
               </button>
             </div>
 
-            {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
             
           </div>

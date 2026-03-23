@@ -8,7 +8,6 @@ const Search = () => {
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Mapping of keywords to your assets in the public folder
   const dummyImages = [
     { img: '/images/Frame 89 (4).svg', keywords: ['CYBERPUNK', 'NEON', 'FUTURE', 'CITY'] },
     { img: '/images/Frame 89 (7).svg', keywords: ['NATURE', 'REALISTIC', 'FOREST', 'GREEN'] },
@@ -30,16 +29,13 @@ const Search = () => {
     setLoading(true);
     setImageUrl(null);
 
-    // Simulate a professional generation delay (2 seconds)
     setTimeout(() => {
       const upperPrompt = prompt.toUpperCase();
       
-      // Filter logic: Find images that match any keyword in the prompt
       const matches = dummyImages.filter(item => 
         item.keywords.some(keyword => upperPrompt.includes(keyword))
       );
 
-      // If matches found, pick one at random. Otherwise, pick any random image from the set.
       const pool = matches.length > 0 ? matches : dummyImages;
       const randomResult = pool[Math.floor(Math.random() * pool.length)];
       
