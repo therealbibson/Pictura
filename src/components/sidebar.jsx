@@ -21,7 +21,7 @@ const sidebar = ({ isOpen, setIsOpen }) => {
                 <span>✨</span> Create
             </Link>
 
-            <Link to='' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
+            <Link to='/savedImages' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
                 <span>🔖</span> Saved
             </Link>
 

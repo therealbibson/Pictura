@@ -13,6 +13,7 @@ import Wallpapers from './pages/wallpapers'
 import ProfilePage from './pages/profile'
 import Personalization from './components/personalization'
 import ResetPassword from './pages/resetpassword'
+import SavedImages from './pages/savedImages'
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/personalization' element={<Personalization />} />
         <Route path='/resetpassword' element={<ResetPassword />} />
+        <Route path='/savedImages' element={<SavedImages />} />
       </Routes>
     </BrowserRouter>
   )

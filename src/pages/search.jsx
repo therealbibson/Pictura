@@ -2,32 +2,64 @@ import React, { useState } from 'react'
 import { CiImageOn } from "react-icons/ci";
 import { IoArrowUpCircleOutline } from "react-icons/io5";
 import { FaMagic } from "react-icons/fa";
+import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 
 const Search = () => {
   const [prompt, setPrompt] = useState("");
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+
+  const handleSaveCreation = () => {
+    if (!imageUrl) return;
+    let creations = JSON.parse(localStorage.getItem('savedCreations') || '[]');
+    const alreadySaved = creations.some(c => c.src === imageUrl);
+    if (!alreadySaved) {
+      creations = [...creations, { id: Date.now(), src: imageUrl }];
+      localStorage.setItem('savedCreations', JSON.stringify(creations));
+    }
+    setIsSaved(true);
+  };
 
   const dummyImages = [
     { img: '/images/Frame 89 (4).svg', keywords: ['CYBERPUNK', 'NEON', 'FUTURE', 'CITY'] },
-    { img: '/images/Frame 89 (7).svg', keywords: ['NATURE', 'REALISTIC', 'FOREST', 'GREEN'] },
+    { img: '/images/Frame 89 (7).svg', keywords: ['NATURE', 'REALISTIC', 'FOREST', 'GREEN', 'PHOTOREALISTIC'] },
     { img: '/images/Frame 89 (5).svg', keywords: ['ABSTRACT', 'FLUID', 'COLORS', 'ART'] },
-    { img: '/images/Frame 89 (2).svg', keywords: ['ROBOT', 'AI', 'TECH', 'HARMONY'] },
-    { img: '/images/Frame 89 (3).svg', keywords: ['CITYSCAPE', 'BUILDING', 'URBAN'] },
-    { img: '/images/Frame 89 (6).svg', keywords: ['ANCIENT', 'RUINS', 'HISTORY', 'STONE'] },
-    { img: '/images/Frame 89 (1).svg', keywords: ['MYSTICAL', 'CREATURE', 'FANTASY', 'MAGIC'] },
-    { img: '/images/Frame 89.svg', keywords: ['BEAUTY', 'DIGITAL', 'ELEGANT', 'WOMAN'] },
-    { img: '/images/Frame 118.svg', keywords: ['PHOTOREALISTIC', 'PORTRAIT'] },
-    { img: '/images/Frame 120.svg', keywords: ['STUDIO GHIBLI', 'ANIME', 'VINTAGE'] },
-    { img: '/images/Frame 122.svg', keywords: ['OIL PAINTING', 'CANVAS', 'BRUSH'] },
-    { img: '/images/Frame 124.svg', keywords: ['3D RENDER', 'CGI', 'OCTANE'] },
+    { img: '/images/Frame 89 (2).svg', keywords: ['ROBOT', 'AI', 'TECH', 'HARMONY', 'FUTURE'] },
+    { img: '/images/Frame 89 (3).svg', keywords: ['CITYSCAPE', 'BUILDING', 'URBAN', 'ARCHITECTURE'] },
+    { img: '/images/Frame 89 (6).svg', keywords: ['ANCIENT', 'RUINS', 'HISTORY', 'STONE', 'LANDSCAPE'] },
+    { img: '/images/Frame 89 (1).svg', keywords: ['MYSTICAL', 'CREATURE', 'FANTASY', 'MAGIC', 'DRAGON'] },
+    { img: '/images/Frame 89.svg', keywords: ['BEAUTY', 'DIGITAL', 'ELEGANT', 'WOMAN', 'PORTRAIT'] },
+    { img: '/images/Frame 118.svg', keywords: ['PHOTOREALISTIC', 'PORTRAIT', 'FACE', 'PERSON'] },
+    { img: '/images/Frame 119.svg', keywords: ['DIGITAL ART', 'ILLUSTRATION', 'COLORFUL'] },
+    { img: '/images/Frame 120.svg', keywords: ['STUDIO GHIBLI', 'ANIME', 'VINTAGE', 'JAPAN'] },
+    { img: '/images/Frame 121.svg', keywords: ['LANDSCAPE', 'SCENIC', 'SKY', 'OPEN'] },
+    { img: '/images/Frame 122.svg', keywords: ['OIL PAINTING', 'CANVAS', 'BRUSH', 'CLASSIC', 'ART'] },
+    { img: '/images/Frame 123.svg', keywords: ['SURREAL', 'DREAM', 'FANTASY', 'VISION'] },
+    { img: '/images/Frame 124.svg', keywords: ['3D RENDER', 'CGI', 'OCTANE', 'RENDER'] },
+    { img: '/images/Frame 125.svg', keywords: ['MINIMAL', 'DARK', 'MOODY', 'SHADOW'] },
+    { img: '/images/Frame 110.svg', keywords: ['SPACE', 'GALAXY', 'COSMOS', 'STARS', 'UNIVERSE'] },
+    { img: '/images/Rectangle 1.svg', keywords: ['PATTERN', 'GEOMETRIC', 'TEXTURE'] },
+    { img: '/images/Rectangle 2.svg', keywords: ['GRADIENT', 'COLOR', 'BLEND', 'PASTEL'] },
+    { img: '/images/Rectangle 7.svg', keywords: ['DARK', 'NIGHT', 'MYSTERY', 'SHADOW'] },
+    { img: '/images/Rectangle 9.svg', keywords: ['WARM', 'SUNSET', 'ORANGE', 'GLOW'] },
+    { img: '/images/Rectangle 10.svg', keywords: ['COOL', 'BLUE', 'OCEAN', 'WATER'] },
+    { img: '/images/Rectangle 12.svg', keywords: ['FOREST', 'TREES', 'GREEN', 'NATURE'] },
+    { img: '/wp1.svg', keywords: ['WALLPAPER', 'CLEAN', 'MINIMAL', 'BACKGROUND'] },
+    { img: '/wp2.svg', keywords: ['WALLPAPER', 'DARK', 'TEXTURE', 'ABSTRACT'] },
+    { img: '/wp3.svg', keywords: ['WALLPAPER', 'BRIGHT', 'VIVID', 'COLORFUL'] },
+    { img: '/wp4.svg', keywords: ['WALLPAPER', 'SPACE', 'DEEP', 'COSMOS'] },
+    { img: '/wp5.svg', keywords: ['WALLPAPER', 'NATURE', 'LANDSCAPE', 'SERENE'] },
+    { img: '/wp6.svg', keywords: ['WALLPAPER', 'NEON', 'GLOW', 'ELECTRIC'] },
+    { img: '/wp7.svg', keywords: ['WALLPAPER', 'SMOKE', 'VAPOR', 'MISTY'] },
+    { img: '/wp8.svg', keywords: ['WALLPAPER', 'OCEAN', 'WAVES', 'BLUE'] },
   ];
 
   const handleGenerate = () => {
     if (!prompt.trim()) return;
-
     setLoading(true);
     setImageUrl(null);
+    setIsSaved(false);
 
     setTimeout(() => {
       const upperPrompt = prompt.toUpperCase();
@@ -54,7 +86,14 @@ const Search = () => {
             {imageUrl ? (
               <div className="relative w-full h-full group animate-in fade-in zoom-in duration-500">
                 <img src={imageUrl} alt="Generated Artwork" className="w-full h-full object-contain rounded-lg shadow-2xl" />
-                <button onClick={() => setImageUrl(null)} className="absolute top-2 right-2 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                <button onClick={() => { setImageUrl(null); setIsSaved(false); }} className="absolute top-2 right-2 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                <button 
+                  onClick={handleSaveCreation} 
+                  className="absolute top-2 left-2 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity text-sm"
+                  title="Save to Creations"
+                >
+                  {isSaved ? <FaBookmark className="text-[#ff8c42]" /> : <FaRegBookmark />}
+                </button>
               </div>
             ) : loading ? (
               <div className="flex flex-col items-center">

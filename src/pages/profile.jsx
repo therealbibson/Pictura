@@ -4,10 +4,16 @@ import { auth } from "../lib/firebase";
 import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import Personalization from "../components/personalization";
+import Email from "../components/email";
+import Languages from "../components/languages";
+import HelpCenter from "../components/helpCenter";
 
 const Profile = () => {
   const navigate = useNavigate();
   const [showPersonalization, setShowPersonalization] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
+  const [showLanguages, setShowLanguages] = useState(false);
+  const [showHelpCenter, setShowHelpCenter] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -22,12 +28,48 @@ const Profile = () => {
     <div className="min-h-screen pictura-bg text-white px-6 py-10 relative">
       {showPersonalization && (
         <>
-          <div 
-            className="fixed inset-0 z-10 bg-black/60 backdrop-blur-sm" 
+          <div
+            className="fixed inset-0 z-10 bg-black/60 backdrop-blur-sm"
             onClick={() => setShowPersonalization(false)}
           ></div>
           <div className="z-20">
             <Personalization />
+          </div>
+        </>
+      )}
+
+      {showEmail && (
+        <>
+          <div
+            className="fixed inset-0 z-10 bg-black/60 backdrop-blur-sm"
+            onClick={() => setShowEmail(false)}
+          ></div>
+          <div className="z-20">
+            <Email />
+          </div>
+        </>
+      )}
+
+      {showLanguages && (
+        <>
+          <div
+            className="fixed inset-0 z-10 bg-black/60 backdrop-blur-sm"
+            onClick={() => setShowLanguages(false)}
+          ></div>
+          <div className="z-20">
+            <Languages />
+          </div>
+        </>
+      )}
+
+      {showHelpCenter && (
+        <>
+          <div
+            className="fixed inset-0 z-10 bg-black/60 backdrop-blur-sm"
+            onClick={() => setShowHelpCenter(false)}
+          ></div>
+          <div className="z-20">
+            <HelpCenter />
           </div>
         </>
       )}
@@ -47,19 +89,19 @@ const Profile = () => {
 
         <div className="flex flex-col gap-4">
           <div onClick={() => setShowPersonalization(true)} className="bg-[#414141] rounded-lg p-4 text-sm duration-300 transition-all hover:bg-[#8f8f8b] cursor-pointer">Personalization</div>
-          <Link to='' className="bg-[#414141] rounded-lg p-4 text-sm duration-300 transition-all hover:bg-[#8f8f8b]">Email</Link>
-          <Link to='' className="bg-[#414141] rounded-lg p-4 text-sm duration-300 transition-all hover:bg-[#8f8f8b]">Languages</Link>
+          <div onClick={() => setShowEmail(true)} className="bg-[#414141] rounded-lg p-4 text-sm duration-300 transition-all hover:bg-[#8f8f8b] cursor-pointer">Email</div>
+          <div onClick={() => setShowLanguages(true)} className="bg-[#414141] rounded-lg p-4 text-sm duration-300 transition-all hover:bg-[#8f8f8b] cursor-pointer">Languages</div>
         </div>
 
         <div className="flex flex-col gap-4">
           <Link to='' className="bg-[#414141] rounded-lg p-4 text-sm duration-300 transition-all hover:bg-[#8f8f8b]">Settings</Link>
-          <Link to='' className="bg-[#414141] rounded-lg p-4 text-sm duration-300 transition-all hover:bg-[#8f8f8b]">Help and feedback</Link>
+          <div onClick={() => setShowHelpCenter(true)} className="bg-[#414141] rounded-lg p-4 text-sm duration-300 transition-all hover:bg-[#8f8f8b] cursor-pointer">Help and feedback</div>
         </div>
 
       </div>
 
       <div className="flex justify-center">
-        <button 
+        <button
           onClick={handleLogout}
           className="border border-gray-500 w-[684px] px-10 py-3 rounded-lg text-sm hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300"
         >

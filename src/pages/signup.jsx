@@ -64,12 +64,12 @@ const SignUp = () => {
 
       <div className='flex flex-col gap-6 items-center justify-center px-6 mt-10'>
           
-        <form onSubmit={handleSubmit} className='flex flex-col items-center gap-4 w-full max-w-[639px]'>
-          <h1 className='text-Roboto text-4xl md:text-[60.72px] font-medium'>Sign up</h1>
+        <form onSubmit={handleSubmit} className='flex flex-col items-center gap-4 w-full max-w-[548px]'>
+          <h1 className='text-Roboto text-4xl sm:text-5xl md:text-[60px] font-medium'>Sign up</h1>
 
           {error && <p className="text-red-500 bg-red-100 p-2 rounded w-full text-center">{error}</p>}
 
-          <div className='relative items-center inline-flex w-[548px]'>
+          <div className='relative items-center inline-flex w-full'>
             <FaRegEnvelope className='absolute left-[12px] text-[#F5F5F0] z-10' />
             <Input 
               type="email" 
@@ -79,7 +79,7 @@ const SignUp = () => {
             />
           </div>
           
-          <div className='relative items-center inline-flex w-[548px]'>
+          <div className='relative items-center inline-flex w-full'>
             <FiLock className='absolute left-[12px] text-[#F5F5F0] z-10' />
             <Input 
               type={showPassword ? "text" : "password"} 
@@ -95,7 +95,7 @@ const SignUp = () => {
             </div>
           </div>
           
-          <div className='relative items-center inline-flex w-[548px]'>
+          <div className='relative items-center inline-flex w-full'>
             <FiLock className='absolute left-[12px] text-[#F5F5F0] z-10' />
             <Input 
               type={showConfirmPassword ? "text" : "password"} 
@@ -117,13 +117,13 @@ const SignUp = () => {
 
           <button 
             disabled={loading}
-            className='flex justify-center bg-[#F5F5F0] text-[#1a1a22] p-[15px] w-[548px] rounded-md transition-all duration-300 hover:bg-[#ff8c42] hover:text-white font-semibold text-center disabled:opacity-50'
+            className='flex justify-center bg-[#F5F5F0] text-[#1a1a22] p-[15px] w-full rounded-md transition-all duration-300 hover:bg-[#ff8c42] hover:text-white font-semibold text-center disabled:opacity-50'
           >
             {loading ? 'Creating Account...' : 'Create Account'}
           </button>
         </form>
 
-        <div className='flex flex-row gap-3 w-[548px] max-w-[639px]'>
+        <div className='flex flex-col sm:flex-row gap-3 w-full max-w-[548px]'>
           <button 
             onClick={handleGoogleSignIn}
             className='flex gap-2 justify-center items-center bg-[#F5F5F0] text-[#1a1a22] p-[15px] w-full rounded-md transition-all duration-300 hover:bg-[#ff8c42] hover:text-white'

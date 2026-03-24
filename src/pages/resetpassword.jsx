@@ -10,11 +10,11 @@ const ResetPassword = () => {
 
       <img src={Logo} alt="Logo" className='p-5 w-[100px] md:w-[120px] h-auto' />
 
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center mt-10">
 
-            <form className='flex flex-col items-center gap-4 w-full max-w-[639px]'>
+            <form className='flex flex-col items-center gap-4 w-full max-w-[548px]'>
 
-                <h2 className='text-Roboto text-[36px] md:text-[60.72px] font-medium'>Set new password</h2>
+                <h2 className='text-Roboto text-4xl sm:text-5xl md:text-[60px] font-medium'>Set new password</h2>
 
                 <div className='relative items-center inline-flex w-[582px]'>
                     <FiEyeOff className='absolute left-[12px] text-[#F5F5F0] z-10' />

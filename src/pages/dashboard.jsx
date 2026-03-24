@@ -1,9 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/sidebar'
 import TopNav from '../components/topNav'
+import { FaRegHeart, FaRegBookmark, FaBookmark } from "react-icons/fa";
 
 const GeneratePage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [savedItems, setSavedItems] = useState([]);
+
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem('savedWebImages') || '[]');
+    setSavedItems(saved);
+  }, []);
+
+  const handleSave = (e, imgStr) => {
+    e.stopPropagation();
+    let saved = JSON.parse(localStorage.getItem('savedWebImages') || '[]');
+    const isAlreadySaved = saved.some(s => s.src === imgStr);
+
+    if (isAlreadySaved) {
+      saved = saved.filter(s => s.src !== imgStr);
+    } else {
+      saved = [...saved, { id: Date.now() + Math.random(), src: imgStr }];
+    }
+
+    localStorage.setItem('savedWebImages', JSON.stringify(saved));
+    setSavedItems(saved);
+  };
 
   useEffect(() => {
     window.history.pushState(null, null, window.location.pathname);
@@ -53,7 +75,21 @@ const GeneratePage = () => {
                     alt={`Frame ${index + 1}`} 
                     className="aspect-square sm:aspect-auto h-48 sm:h-40 lg:h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110" 
                   />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition pointer-events-none"></div>
+
+                  <div className="absolute top-2 right-2 z-10 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition">
+                    <button className="bg-black/60 p-1 rounded-full text-xs">
+                      <FaRegHeart />
+                    </button>
+                    <button 
+                      onClick={(e) => handleSave(e, frame)} 
+                      className="bg-black/60 p-1 rounded-full text-xs pointer-events-auto"
+                    >
+                      {savedItems.some(s => s.src === frame) ? <FaBookmark className="text-[#ff8c42]" /> : <FaRegBookmark />}
+                    </button>
+                  </div>
+
                 </div>
               ))}
             </div>

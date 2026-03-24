@@ -1,9 +1,32 @@
 import React from "react";
 import Logo from '../assets/images/logo.png'
 import { Link } from "react-router-dom";
-import { FaRegHeart, FaRegBookmark } from "react-icons/fa";
+import { FaRegHeart, FaRegBookmark, FaBookmark } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 const Wallpapers = () => {
+  const [savedItems, setSavedItems] = useState([]);
+
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem('savedWebImages') || '[]');
+    setSavedItems(saved);
+  }, []);
+
+  const handleSave = (e, imgStr) => {
+    e.stopPropagation();
+    let saved = JSON.parse(localStorage.getItem('savedWebImages') || '[]');
+    const isAlreadySaved = saved.some(s => s.src === imgStr);
+
+    if (isAlreadySaved) {
+      saved = saved.filter(s => s.src !== imgStr);
+    } else {
+      saved = [...saved, { id: Date.now() + Math.random(), src: imgStr }];
+    }
+
+    localStorage.setItem('savedWebImages', JSON.stringify(saved));
+    setSavedItems(saved);
+  };
+
   const images = [
     "/wp8.svg",
     "/wp7.svg",
@@ -49,16 +72,19 @@ const Wallpapers = () => {
               className="w-full h-56 object-cover group-hover:scale-105 transition duration-300"
             />
 
-            <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition pointer-events-none"></div>
+
+            <div className="absolute top-2 right-2 z-10 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition">
               <button className="bg-black/60 p-1 rounded-full text-xs">
                 <FaRegHeart />
               </button>
-              <button className="bg-black/60 p-1 rounded-full text-xs">
-                <FaRegBookmark />
+              <button 
+                onClick={(e) => handleSave(e, img)} 
+                className="bg-black/60 p-1 rounded-full text-xs pointer-events-auto"
+              >
+                {savedItems.some(s => s.src === img) ? <FaBookmark className="text-[#ff8c42]" /> : <FaRegBookmark />}
               </button>
             </div>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
           </div>
         ))}
 

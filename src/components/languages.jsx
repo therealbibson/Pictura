@@ -1,31 +1,32 @@
-import React from 'react';
+import React from "react";
 
 const Languages = () => {
-  const languages = [
-    "English",
-    "Français",
-    "Español",
-    "العربية",
-    "(Zhōngwén)",
-    "Deutsch",
-    ""
-  ];
-
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#1a1c1e] p-4">
+    <div className="absolute left-[22%] w-[55%] min-h-[550px] bg-[#050505] rounded-[1.5rem] z-20 pb-10 pt-10 shadow-2xl flex flex-col items-center">
 
-        <div className="w-full max-w-2xl bg-black rounded-3xl p-8 shadow-2xl">
-            <div className="flex flex-col space-y-4">
-                {languages.map((lang, index) => (
-                    <button
-                        key={index}
-                        className="w-full bg-[#404040] hover:bg-[#4a4a4a] transition-colors duration-200 py-6 px-8 rounded-2xl text-left text-white text-lg font-medium shadow-sm"
-                    >
-                        {lang}  
-                    </button>
-                ))}
-            </div>
+      <h3 className="text-xl font-bold mb-5 tracking-wide">kindly fill in the informations</h3>
+
+      <div className="w-[65%] flex flex-col gap-5">
+        <div className="w-full h-14 bg-[#4a4a4d] rounded-xl flex items-center px-6 text-sm text-gray-300 shadow-inner cursor-text hover:bg-[#555558] transition">
+          English
         </div>
+        <div className="w-full h-14 bg-[#4a4a4d] rounded-xl flex items-center px-6 text-sm text-gray-300 shadow-inner cursor-text hover:bg-[#555558] transition">
+          Français
+        </div>
+        <div className="w-full h-14 bg-[#4a4a4d] rounded-xl flex items-center px-6 text-sm text-gray-300 shadow-inner cursor-text hover:bg-[#555558] transition">
+          Español
+        </div>
+        <div className="w-full h-14 bg-[#4a4a4d] rounded-xl flex items-center px-6 text-sm text-gray-300 shadow-inner cursor-text hover:bg-[#555558] transition">
+          العربية
+        </div>
+        <div className="w-full h-14 bg-[#4a4a4d] rounded-xl flex items-center px-6 text-sm text-gray-300 shadow-inner cursor-text hover:bg-[#555558] transition">
+          Zhōngwén
+        </div>
+        <div className="w-full h-14 bg-[#4a4a4d] rounded-xl flex items-center px-6 text-sm text-gray-300 shadow-inner cursor-text hover:bg-[#555558] transition">
+          Deutsch
+        </div>
+      </div>
+
     </div>
   );
 };
