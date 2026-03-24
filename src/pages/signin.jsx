@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Logo from '../assets/images/logo.png'
 import { useNavigate, Link } from 'react-router-dom'
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import { Input } from './signup'
 import { FaRegEnvelope } from "react-icons/fa6";
 import { FiLock } from "react-icons/fi";
 import { auth } from '../lib/firebase'
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { FaGoogle, FaApple } from "react-icons/fa";
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -120,11 +120,11 @@ const SignIn = () => {
             onClick={handleGoogleSignIn}
             className='flex gap-2 justify-center items-center bg-[#F5F5F0] text-[#1a1a22] p-[15px] w-full rounded-md transition-all duration-300 hover:bg-[#ff8c42] hover:text-white'
           >
-            <FaRegArrowAltCircleRight /> Google
+            <FaGoogle /> Google
           </button>
 
           <button className='flex gap-2 justify-center items-center bg-[#F5F5F0] text-[#1a1a22] p-[15px] w-full rounded-md transition-all duration-300 hover:bg-[#ff8c42] hover:text-white'>
-            <FaRegArrowAltCircleRight /> Apple
+            <FaApple /> Apple
           </button>        
         </div>
 
