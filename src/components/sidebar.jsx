@@ -1,6 +1,10 @@
 import React from 'react'
 import Logo from '../assets/images/logo.png'
 import { Link } from 'react-router-dom'
+import { CiSettings } from "react-icons/ci";
+import { FaRegBookmark } from "react-icons/fa";
+import { IoMdBook } from "react-icons/io";
+import { TbCalculator } from "react-icons/tb";
 
 const sidebar = ({ isOpen, setIsOpen }) => {
   return (
@@ -14,19 +18,19 @@ const sidebar = ({ isOpen, setIsOpen }) => {
 
         <nav className="space-y-6 text-[#F5F5F0]">
             <Link to='/gallery' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
-                <span>📖</span> Discover
+                <span><IoMdBook /></span> Discover
             </Link>
 
-            <Link to='' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
-                <span>✨</span> Create
+            <Link to='/wallpaper' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
+                <span><TbCalculator /></span> Create
             </Link>
 
             <Link to='/savedImages' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
-                <span>🔖</span> Saved
+                <span><FaRegBookmark /></span> Saved
             </Link>
 
             <Link to='/profile' className="flex items-center gap-3 hover:text-[#ff8c42] transition-colors cursor-pointer">
-                <span>⚙️</span> Settings
+                <span><CiSettings /></span> Settings
             </Link>
         </nav>
            
