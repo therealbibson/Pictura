@@ -10,13 +10,13 @@ const ResetPassword = () => {
 
       <img src={Logo} alt="Logo" className='p-5 w-[100px] md:w-[120px] h-auto' />
 
-        <div className="flex flex-col items-center justify-center mt-10">
+        <div className="flex flex-col items-center justify-center mt-10 px-4 sm:px-6">
 
             <form className='flex flex-col items-center gap-4 w-full max-w-[548px]'>
 
-                <h2 className='text-Roboto text-4xl sm:text-5xl md:text-[60px] font-medium'>Set new password</h2>
+                <h2 className='text-Roboto text-4xl sm:text-5xl md:text-[60px] font-medium text-center'>Set new password</h2>
 
-                <div className='relative items-center inline-flex w-[582px]'>
+                <div className='relative items-center inline-flex w-full'>
                     <FiEyeOff className='absolute left-[12px] text-[#F5F5F0] z-10' />
                     <Input 
                     type="password" 
@@ -24,7 +24,7 @@ const ResetPassword = () => {
                     />
                 </div>
 
-                <div className='relative items-center inline-flex w-[582px]'>
+                <div className='relative items-center inline-flex w-full'>
                     <FiEyeOff className='absolute left-[12px] text-[#F5F5F0] z-10' />
                     <Input 
                     type="password" 
@@ -33,7 +33,7 @@ const ResetPassword = () => {
                 </div>
 
                 <button
-                    className='flex justify-center bg-[#F5F5F0] text-[#1a1a22] p-[15px] w-[582px] rounded-md transition-all duration-300 hover:bg-[#ff8c42] hover:text-white font-semibold disabled:opacity-50'
+                    className='flex justify-center bg-[#F5F5F0] text-[#1a1a22] p-[15px] w-full rounded-md transition-all duration-300 hover:bg-[#ff8c42] hover:text-white font-semibold disabled:opacity-50'
                 >
                     Reset Password
                 </button>
